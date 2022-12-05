@@ -4,6 +4,6 @@ def no_c(my_string):
     count = 0
     for element in my_string_list:
         if element == 'c' or element == 'C':
-            my_string_list[count]=""
+            my_string_list[count] = ""
         count += 1
     return "".join(my_string_list)
