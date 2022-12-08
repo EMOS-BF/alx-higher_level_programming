@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 def search_replace(my_list, search, replace):
-    cpt = -1
+    cpt = 0
     for elt in my_list:
-        cpt = cpt + 1
         if elt == search:
-            j = cpt
-    my_list[j] = replace
+            my_list[cpt] = replace
+            cpt = cpt + 1
+        else:
+            cpt = cpt + 1
     return my_list
-
