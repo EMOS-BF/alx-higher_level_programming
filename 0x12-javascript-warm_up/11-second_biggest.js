@@ -2,7 +2,7 @@
 let i = 0;
 const array = [];
 for (i = 2; i < process.argv.length; i++) {
-  array.push(process.argv[i]);
+  array.push(parseInt(process.argv[i]));
 }
 
 let j = 0;
