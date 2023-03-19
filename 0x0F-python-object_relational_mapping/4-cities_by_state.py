@@ -5,16 +5,24 @@ import MySQLdb
 from sys import MySQLdb
 
 if __name__ == '__main__':
+    db = MySQLdb.connect(user=sys.argv[1],
+                         passwd=sys.argv[2],
+                         db=sys.argv[3],
+                         host='localhost',
+                         port=3306)
 
-     db = MySQLdb.connect(host="localhost", user=argv[1], port=3306,
-                         passwd=argv[2], db=argv[3])
+    cursor = db.cursor()
 
-    cur = db.cursor()
-    cur.execute("SELECT c.id, c.name, s.name
-                 FROM states s, cities c
-                 WHERE c.state_id = s.id
-                 ORDER BY c.id ASC")
-    cities = cur.fetchall()
+    sql = """SELECT c.id, c.name, s.name
+          FROM states s, cities c
+          WHERE c.state_id = s.id
+          ORDER BY c.id ASC"""
 
-    for citie in cities:
-        print(citie)
+    cursor.execute(sql)
+
+    data = cursor.fetchall()
+
+    for row in data:
+        print(row)
+    cursor.close()
+    db.close()
