@@ -2,7 +2,7 @@
 """lists all cities from the database hbtn_0e_4_usa"""
 
 import MySQLdb
-from sys import MySQLdb
+from sys import argv
 
 if __name__ == '__main__':
     db = MySQLdb.connect(user=sys.argv[1],
@@ -13,17 +13,10 @@ if __name__ == '__main__':
 
     cursor = db.cursor()
 
-    sql = """
-            SELECT
-                cities.id, cities.name, states.name
-            FROM
-                cities
-            JOIN
-                states
-            ON
-                cities.state_id = states.id
-            ORDER BY
-                cities.id ASC"""
+    sql = """SELECT c.id, c.name, s.name
+          FROM states s, cities c
+          WHERE c.state_id = s.id
+          ORDER BY c.id ASC"""
 
     cursor.execute(sql)
 
@@ -31,5 +24,6 @@ if __name__ == '__main__':
 
     for row in data:
         print(row)
+
     cursor.close()
     db.close()
