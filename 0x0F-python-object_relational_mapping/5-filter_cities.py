@@ -15,9 +15,9 @@ if __name__ == "__main__":
     SELECT c.id, c.name, s.name FROM cities AS c\
     JOIN states AS s\
     ON s.id = c.state_id\
-    WHERE s.name = %s\
+    WHERE s.name  LIKE BINARY %s\
     ORDER BY c.id ASC\
-    ",(argv[4],))
+    ", (argv[4],))
     rows = cursor.fetchall()
     for row in rows:
         print(row)
