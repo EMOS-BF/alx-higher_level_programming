@@ -12,7 +12,7 @@ if __name__ == "__main__":
 
     cursor = db.cursor()
     cursor.execute("\
-    SELECT c.id, c.name, s.name FROM cities AS c\
+    SELECT c.name FROM cities AS c\
     JOIN states AS s\
     ON s.id = c.state_id\
     WHERE s.name  LIKE BINARY %s\
