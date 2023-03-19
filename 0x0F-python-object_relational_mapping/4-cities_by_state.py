@@ -15,5 +15,3 @@ if __name__ == '__main__':
 
     for citie in cities:
         print(citie)
-
-    db.close()
