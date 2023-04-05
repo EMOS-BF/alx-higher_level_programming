@@ -1,19 +1,12 @@
-#!/user/bin/python3
+#!/usr/bin/python3
 """
-Class MyList that inerits from class list
+contains the MyList class
 """
-
 class MyList(list):
-    
+    """a subclass of list"""
+    def __init__(self):
+        """initializes the object"""
+        super().__init__()
     def print_sorted(self):
-        """print the list in ascending sort"""
-        new_list =self[:]
-        count = 0
-        for element in new_list:
-            if type(element) != int:
-                count += 1
-        if count != 0:
-            raise TypeError("All element of the list must be an integer")
-        else:
-            new_list.sort()
-            print("{}".format(new_list))
+        """prints the sorted list"""
+        print(sorted(self))
