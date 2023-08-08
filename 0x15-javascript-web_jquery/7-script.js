@@ -1,4 +1,7 @@
-$(document).ready(function () {
-  const URL = 'https://swapi.co/api/people/5/?format=json';
-  $.getJSON(URL, (data) => $('DIV#character').text(data.name));
+$(function () {
+  $.get('https://swapi-api.alx-tools.com/api/people/5/?format=json', function(data, status){
+    if (status ==='success'){
+      $('#character').text(data.name);
+    }
+  });
 });
